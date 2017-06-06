@@ -7,7 +7,8 @@
 3. run sql dump file to generate databases and tables
 4. write a `config.js` file with the following template to fill-in sql server credentials:
 
-```module.exports = {
+```
+module.exports = {
   DATABASE_USER: 'USER',
   DATABASE_PASSWORD: 'PASSWORD',
   DATABASE_NAME: 'Sourcify',
