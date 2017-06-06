@@ -34,11 +34,12 @@ CREATE TABLE `Messages` (
   `msg_id` int(11) NOT NULL AUTO_INCREMENT,
   `to_user` int(11) NOT NULL,
   `message` varchar(420) NOT NULL,
+  `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`msg_id`),
   UNIQUE KEY `msg_id_UNIQUE` (`msg_id`),
   KEY `user_id_idx` (`to_user`),
   CONSTRAINT `user_id` FOREIGN KEY (`to_user`) REFERENCES `Users` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -83,4 +84,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-06 14:55:54
+-- Dump completed on 2017-06-06 15:20:05

@@ -86,12 +86,23 @@ function writeMessages(id, msgs) {
     parent.appendChild(ele);
   }
 }
+
+function timestamp() {
+  date = new Date();
+  var hour = date.getHours().toString();
+  var min = date.getMinutes().toString();
+  var sec = date.getSeconds().toString();
+  time = hour + ':' + min + ':' + sec;
+  return time;
+}
+
 function writeMessageClient(id, msgs) {
   console.log("begin writing msgs:");
   console.log(msgs);
+  var time = timestamp();
   var parent = document.getElementById('history_user_' + id);
   var ele = document.createElement('p');
-  var line = document.createTextNode(msgs);
+  var line = document.createTextNode('[' + time + '] - ' + msgs);
   ele.appendChild(line);
   parent.appendChild(ele);
 }
