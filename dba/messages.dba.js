@@ -3,7 +3,7 @@ var db = require('../db');
 
 
 module.exports.getChatHistory = function(req, res, id) {
-  queryString = 'SELECT message FROM Messages WHERE to_user = ' + id;
+  queryString = "SELECT message, DATE_FORMAT(timestamp, '%r') AS time FROM Messages WHERE to_user = " + id;
   console.log("executing query '" + queryString + "' ...");
   db.query(queryString, function(err, rows) {
     if (err){

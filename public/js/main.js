@@ -13,7 +13,6 @@ function serialize(obj, prefix) {
 }
 
 function get(url, data, callback) {
-  console.log(url, data);
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
@@ -60,10 +59,10 @@ function sendMessage() {
 }
 
 function pullChatHistory(user_id) {
-  var msgs;
   get("/messages/history/" + user_id, {}, function(data) {
     if (data.success) { 
-      msgs = data.messages;
+      console.log('was success');
+      console.log(data);
       writeMessages(user_id, data.messages);
       // console.log(msgs);
       // return msgs;
@@ -81,7 +80,8 @@ function writeMessages(id, msgs) {
   var parent = document.getElementById('history_user_' + id);
   for(var x of msgs) {
     var ele = document.createElement('p');
-    var line = document.createTextNode(x.message);
+    var timeformat = x.time.slice(0,-3);
+    var line = document.createTextNode('[' + timeformat + '] - ' + x.message);
     ele.appendChild(line);
     parent.appendChild(ele);
   }
@@ -89,7 +89,7 @@ function writeMessages(id, msgs) {
 
 function timestamp() {
   date = new Date();
-  var hour = date.getHours().toString();
+  var hour = date.getHours().toString() - 12;
   var min = date.getMinutes().toString();
   var sec = date.getSeconds().toString();
   time = hour + ':' + min + ':' + sec;

@@ -1,6 +1,5 @@
 var db = require('../db');
 var dba = require('../dba/messages.dba');
-var bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
 
