@@ -1,14 +1,28 @@
 {
-  "name": "assessment",
-  "version": "1.0.0",
+  "name": "simple_msg_app",
+  "version": "1.0.1",
   "description": "simple messaging app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
-  "author": "",
+  "author": "orion ou",
   "license": "ISC",
   "dependencies": {
     "express": "^4.15.3"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omgirok/simple_message.git"
+  },
+  "keywords": [
+    "messaging",
+    "simple"
+  ],
+  "bugs": {
+    "url": "https://github.com/omgirok/simple_message/issues"
+  },
+  "homepage": "https://github.com/omgirok/simple_message#readme"
 }
