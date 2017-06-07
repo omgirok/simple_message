@@ -39,13 +39,9 @@ function post(url, data, callback) {
 }
 
 function sendMessage() {
-  // post function here
-  
   id = this.id;
   var msgField = document.getElementById('user_'+id);
   var msg = msgField.value;
-
-  console.log('sending the msg: ' + msg + ', to user_id: ' + id);
   post('/messages/send', {"user_id": id, "message": msg}, 
     function(data) {
       if (data.success) {
@@ -61,8 +57,6 @@ function sendMessage() {
 function pullChatHistory(user_id) {
   get("/messages/history/" + user_id, {}, function(data) {
     if (data.success) { 
-      console.log('was success');
-      console.log(data);
       writeMessages(user_id, data.messages);
       // console.log(msgs);
       // return msgs;
@@ -75,8 +69,6 @@ function pullChatHistory(user_id) {
 }
 
 function writeMessages(id, msgs) {
-  console.log("begin writing msgs:");
-  console.log(msgs);
   var parent = document.getElementById('history_user_' + id);
   for(var x of msgs) {
     var ele = document.createElement('p');
@@ -89,16 +81,14 @@ function writeMessages(id, msgs) {
 
 function timestamp() {
   date = new Date();
-  var hour = date.getHours().toString() - 12;
-  var min = date.getMinutes().toString();
-  var sec = date.getSeconds().toString();
+  var hour = parseInt(date.getHours().toString()) > 12 ? date.getHours().toString() - 12: '0' + date.getHours().toString();
+  var min = date.getMinutes().toString() < 10 ? '0' + date.getMinutes().toString() : date.getMinutes().toString();
+  var sec = date.getSeconds().toString() < 10 ? '0' + date.getSeconds().toString() : date.getSeconds().toString();
   time = hour + ':' + min + ':' + sec;
   return time;
 }
 
 function writeMessageClient(id, msgs) {
-  console.log("begin writing msgs:");
-  console.log(msgs);
   var time = timestamp();
   var parent = document.getElementById('history_user_' + id);
   var ele = document.createElement('p');
@@ -137,11 +127,9 @@ window.onload = function() {
   initEvents();
 
 }
-// writeMessages(toWrite);
 
 /*
   1. initialize [send] button with user id
-  2. addeventlistener to [send] button with onclick to send message
-
+  2. addeventlistener to [send] button with onclick to send message  
 */
 
