@@ -2,9 +2,6 @@
     This file has all the routes for app
 */
 
-
-
-
 var express = require('express');
 var app = express();
 var messages = require('./messages');
